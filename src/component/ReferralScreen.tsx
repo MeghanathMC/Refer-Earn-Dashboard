@@ -28,12 +28,13 @@ export default function ReferralScreen() {
       };
 
   return (
-    <div className="relative mx-auto w-full max-w-[375px] overflow-hidden rounded-[40px] bg-white shadow-xl">
+      <div className= "flex justify-end w-full min-h-screen px-4">  
+      <div className="fixed right-4 top-10 w-full max-w-[345px] overflow-hidden rounded-[40px] bg-white shadow-xl">
       {/* Phone notch */}
       <div className="absolute left-1/2 top-0 h-7 w-1/3 -translate-x-1/2 rounded-b-xl bg-black"></div>
 
       {/* Purple gradient header */}
-      <div className="relative bg-gradient-to-b from-blue-600 to-blue-500 px-6 pt-10 pb-7 text-center text-white rounded-b-[50px]">
+      <div className="relative bg-gradient-to-b from-[#2587c8] to-[#3980e3] px-6 pt-10 pb-7 text-center text-white rounded-b-[50px]">
         <h1 className="mb-6 text-2xl font-bold">
           Refer your friends
           <br />
@@ -182,9 +183,10 @@ export default function ReferralScreen() {
           </Accordion>
         </div>
 
-      {/* Bottom gradient */}
-      {/* <div className="h-10 bg-gradient-to-b from-white to-pink-200"></div> */}
-    </div>
+      
+    </div></div>
+
+  
   )
 }
 
