@@ -9,12 +9,22 @@ type Referral = {
   status: "Paid" | "Pending" | "Unpaid";
 };
 
+// Helper function to format date
+const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-GB', { 
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  }).replace(/\//g, '/');
+};
+
 const initialReferralsData: Referral[] = [
   { 
     id: "TRN24002", 
     name: "Rahul Sharma", 
     email: "rahul.sharma234@gmail.com", 
-    date: "20 October 2024",
+    date: "20/10/2024",
     amount: 15000,
     status: "Paid"
   },
@@ -22,7 +32,7 @@ const initialReferralsData: Referral[] = [
     id: "TRN24003", 
     name: "Priya Patel", 
     email: "priyapatel99@gmail.com", 
-    date: "21 October 2024",
+    date: "21/10/2024",
     amount: 12000,
     status: "Paid"
   },
@@ -30,7 +40,7 @@ const initialReferralsData: Referral[] = [
     id: "TRN24005", 
     name: "Amit Kumar", 
     email: "amitkumar.work@gmail.com", 
-    date: "22 October 2024",
+    date: "22/10/2024",
     amount: 18000,
     status: "Pending"
   },
@@ -38,7 +48,7 @@ const initialReferralsData: Referral[] = [
     id: "TRN24006", 
     name: "Sneha Reddy", 
     email: "sneha.reddy45@gmail.com", 
-    date: "23 October 2024",
+    date: "23/10/2024",
     amount: 20000,
     status: "Unpaid"
   },
@@ -46,7 +56,7 @@ const initialReferralsData: Referral[] = [
     id: "TRN24007", 
     name: "Karthik Menon", 
     email: "karthik.menon21@gmail.com", 
-    date: "24 October 2024",
+    date: "24/10/2024",
     amount: 16000,
     status: "Unpaid"
   }
@@ -91,9 +101,11 @@ const ReferDetails = () => {
     const newOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newOrder);
     const sorted = [...referralsData].sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
-      return newOrder === "asc" ? dateA - dateB : dateB - dateA;
+      const [dayA, monthA, yearA] = a.date.split('/');
+      const [dayB, monthB, yearB] = b.date.split('/');
+      const dateA = new Date(parseInt(yearA), parseInt(monthA) - 1, parseInt(dayA));
+      const dateB = new Date(parseInt(yearB), parseInt(monthB) - 1, parseInt(dayB));
+      return newOrder === "asc" ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
     });
     setReferralsData(sorted);
   };
