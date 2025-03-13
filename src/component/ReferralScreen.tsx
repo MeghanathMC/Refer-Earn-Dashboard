@@ -1,5 +1,3 @@
-
-
 "use client"
 
 import { useState } from "react";
@@ -28,13 +26,12 @@ export default function ReferralScreen() {
       };
 
   return (
-      <div className= "flex justify-end w-full min-h-screen px-4">  
-      <div className="fixed right-4 top-10 w-full max-w-[345px] overflow-hidden rounded-[40px] bg-white shadow-xl">
+      <div className="flex justify-center w-full min-h-screen pt-0">  
+      <div className="w-full max-w-[345px] overflow-hidden rounded-[40px] bg-white shadow-xl">
       {/* Phone notch */}
-      <div className="absolute left-1/2 top-0 h-7 w-1/3 -translate-x-1/2 rounded-b-xl bg-black"></div>
-
+  
       {/* Purple gradient header */}
-      <div className="relative bg-gradient-to-b from-[#2587c8] to-[#3980e3] px-6 pt-10 pb-7 text-center text-white rounded-b-[50px]">
+      <div className="relative bg-gradient-to-b from-[#2587c8] to-[#3980e3] px-6 pt-6 pb-7 text-center text-white rounded-b-[50px]">
         <h1 className="mb-6 text-2xl font-bold">
           Refer your friends
           <br />
@@ -137,56 +134,51 @@ export default function ReferralScreen() {
       </div>
 
       {/* FAQ Section */}
-      
-      <div className="bg-white px-6 py-8 border rounded-lg" >
-          <h2 className="mb-4 text-lg font-bold text-gray-800">Frequently Asked Questions</h2>
+      <div className="bg-white px-6 h-max">
+          <h2 className="mb-2 pt-4 text-lg font-bold text-gray-800">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1" className="border-b border-gray-200 py-2">
-              <AccordionTrigger className="text-left font-medium text-gray-700">
+            <AccordionItem value="item-1" className="border-b border-gray-200">
+              <AccordionTrigger className="text-left font-medium text-gray-700 py-2.5">
                 What is Tap Academy's Referral and Earn Program?
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-gray-600">
+              <AccordionContent className="text-sm text-gray-600 pb-2.5">
                 The Refer and Earn Program lets you earn real cash or discounts by inviting your friends to join our training batches. When your friend enrolls using your referral link, both of you get exciting rewards!
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="border-b border-gray-200 py-2">
-              <AccordionTrigger className="text-left font-medium text-gray-700">How does referral process work?</AccordionTrigger>
-              <AccordionContent className="text-sm text-gray-600">
-              It’s simple! Share your unique referral link with your friends. When they sign up and enroll in a batch using your link, they get a discount on their course fee — and you earn real cash or cashback on your training fee.
+            <AccordionItem value="item-2" className="border-b border-gray-200">
+              <AccordionTrigger className="text-left font-medium text-gray-700 py-2.5">How does referral process work?</AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-600 pb-2.5">
+              It's simple! Share your unique referral link with your friends. When they sign up and enroll in a batch using your link, they get a discount on their course fee — and you earn real cash or cashback on your training fee.
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-3" className="border-b border-gray-200 py-2">
-              <AccordionTrigger className="text-left font-medium text-gray-700">
+            <AccordionItem value="item-3" className="border-b border-gray-200">
+              <AccordionTrigger className="text-left font-medium text-gray-700 py-2.5">
               How much can I earn through referrals?
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-gray-600">
-              There’s no limit! For every friend who joins using your referral link, you earn a set cashback or discount. The more friends you refer, the more rewards you collect!
+              <AccordionContent className="text-sm text-gray-600 pb-2.5">
+              There's no limit! For every friend who joins using your referral link, you earn a set cashback or discount. The more friends you refer, the more rewards you collect!
               </AccordionContent>
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="border-b border-gray-200 py-2">
-              <AccordionTrigger className="text-left font-medium text-gray-700"> When will I receive my referral rewards?</AccordionTrigger>
-              <AccordionContent className="text-sm text-gray-600">
-              You’ll receive your rewards once your friend’s enrollment and payment are successfully completed. Rewards are either added as cashback to your account or deducted from your pending course fee.
+            <AccordionItem value="item-4" className="border-b border-gray-200">
+              <AccordionTrigger className="text-left font-medium text-gray-700 py-2.5">When will I receive my referral rewards?</AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-600 pb-2.5">
+              You'll receive your rewards once your friend's enrollment and payment are successfully completed. Rewards are either added as cashback to your account or deducted from your pending course fee.
               </AccordionContent>
-              
             </AccordionItem>
 
-            <AccordionItem value="item-2" className="border-b border-gray-200 py-2">
-              <AccordionTrigger className="text-left font-medium text-gray-700">  Can my friend get a discount too?</AccordionTrigger>
-              <AccordionContent className="text-sm text-gray-600">
+            <AccordionItem value="item-5">
+              <AccordionTrigger className="text-left font-medium text-gray-700 py-2.5">Can my friend get a discount too?</AccordionTrigger>
+              <AccordionContent className="text-sm text-gray-600 pb-2.5">
               Yes! Your friend also gets an instant discount on their course fee when they use your referral link to enroll in our training batch.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
-
-      
-    </div></div>
-
-  
+      </div>
+    </div>
   )
 }
 

@@ -1,8 +1,35 @@
 function Info(props: {title: string , value: string, type: string}) {
+  const getStyles = () => {
+    switch(props.type) {
+      case 'green':
+        return {
+          bg: 'bg-gradient-to-l from-green-200 to-green-50',
+          text: 'text-green-700'
+        };
+      case 'red':
+        return {
+          bg: 'bg-gradient-to-l from-red-200 to-red-50',
+          text: 'text-red-700'
+        };
+      case 'blue':
+        return {
+          bg: 'bg-gradient-to-l from-blue-200 to-blue-50',
+          text: 'text-blue-700'
+        };
+      default:
+        return {
+          bg: 'bg-gradient-to-l from-yellow-200 to-yellow-50',
+          text: 'text-yellow-700'
+        };
+    }
+  };
+
+  const styles = getStyles();
+
   return (
-    <div className={`flex flex-col font-main ${props.type === 'green'? 'bg-gradient-to-l from-green-300 to-green-100' : props.type === 'red' ? 'bg-gradient-to-l from-red-300 to-red-100' : 'bg-gradient-to-l from-yellow-300 to-yellow-100'} px-10 py-8 rounded-b-4xl rounded-tr-4xl`}>
-        <span className="text-sm tracking-wide">{props.title}</span>
-        <span className="text-4xl">{props.value}</span>
+    <div className={`flex flex-col justify-center h-[100px] ${styles.bg} px-5 py-3 rounded-xl`}>
+      <span className="text-sm font-medium text-gray-600">{props.title}</span>
+      <span className={`text-xl font-bold mt-1 ${styles.text}`}>{props.value}</span>
     </div>
   )
 }

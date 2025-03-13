@@ -22,7 +22,9 @@ function Sidebar() {
               icon: "fi fi-ss-briefcase",
               path: "/jobs",
             },
-            { icon: "fi fi-rr-phone-call", path: "/contact" },
+            { icon: "fi fi-sr-web-test", path: "/test" },
+            { icon: "fi fi-ss-bookmark", path: "/bookmark" },
+            { icon: "fi fi-sr-user", path: "/profile" }
           ].map(({ icon, path }, index) => (
             <li key={index} className="w-full">
               <button
@@ -47,7 +49,7 @@ function Sidebar() {
         className={`flex items-center justify-center bg-red-200 p-3 rounded-full`}
       >
         <span>
-          <i className="fi fi-rr-power text-xl flex items-center justify-center"></i>
+          <i className="fi fi-ss-power text-xl flex items-center justify-center"></i>
         </span>
       </button>
     </motion.div>

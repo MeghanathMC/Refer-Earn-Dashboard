@@ -4,28 +4,32 @@ import wave from "../../assets/Lottie/wave.json";
 
 function Greet(props: { setOpen: () => void }) {
   return (
-    <div
-      className="w-full pt-5 px-5 flex gap-10 flex-col"
-      style={{ fontFamily: "Outfit, sans-serif" }}
-    >
+    <div className="w-full px-6 py-5 flex gap-8 flex-col"
+      style={{ fontFamily: "Outfit, sans-serif" }}>
+      
       <div className="flex justify-between items-center">
-        <div className="flex items-center justify-start">
-          <h1 className="text-4xl font-medium">Welcome Harshith!</h1>
-          <div className="w-16 flex items-center justify-center">
-            <Lottie animationData={wave} loop={true} />
-          </div>
+        <div className="flex items-center gap-1">
+          <h1 className="text-4xl font-medium relative">
+            Welcome Harshith!
+            <div className="absolute -right-16 -top-2">
+              <Lottie animationData={wave} loop={true} style={{ width: "64px", height: "64px" }} />
+            </div>
+          </h1>
         </div>
-        <div>
-          <button className="bg-[#2160ad] text-white flex items-center justify-center gap-3 px-3 py-2 rounded-2xl text-base cursor-pointer hover:bg-[#e8cfff] transition-all" onClick={props.setOpen}>
-          <i className="fi fi-rr-indian-rupee-sign flex items-center justify-center"></i>
-            <span>Refer and Earn</span>
-          </button>
-        </div>
+        
+        <button 
+          onClick={props.setOpen}
+          className="bg-[#2160ad] text-white flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-base cursor-pointer hover:bg-[#1a4d8c] transition-all"
+        >
+          <i className="fi fi-rr-indian-rupee-sign"></i>
+          <span>Refer & Earn</span>
+        </button>
       </div>
-      <div className="flex flex-wrap justify-between gap-5 w-full max-w-md">
-        <Info title="Remaining amount" value="28,999rs" type="red" />
-        <Info title="Days left" value="15 days" type="blue" />
-        <Info title="Referral Earnings" value="5000rs" type="green" />
+
+      <div className="grid grid-cols-2 gap-4 w-full">
+        <Info title="Remaining Amount" value="₹28,999" type="red" />
+        <Info title="Days Left" value="15 Days" type="blue" />
+        <Info title="Referral Earnings" value="₹5,000" type="green" />
         <Info title="Successful Referrals" value="5" type="green" />
       </div>
     </div>
