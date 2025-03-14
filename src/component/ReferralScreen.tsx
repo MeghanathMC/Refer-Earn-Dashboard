@@ -27,11 +27,12 @@ export default function ReferralScreen() {
 
   return (
       <div className="flex justify-center w-full min-h-screen pt-0">  
-      <div className="w-full max-w-[345px] overflow-hidden rounded-[40px] bg-white shadow-xl">
-      {/* Phone notch */}
-  
-      {/* Purple gradient header */}
-      <div className="relative bg-gradient-to-b from-[#2587c8] to-[#3980e3] px-6 pt-6 pb-7 text-center text-white rounded-b-[50px]">
+      <div className="w-full max-w-[345px] overflow-hidden  bg-white shadow-sm">
+      {/* 
+          bg: '',
+          bg-gradient-to-b from-[#3f76ed] to-[#3370f3]
+        */}
+      <div className="relative bg-gradient-to-l from-blue-500 to-blue-300 px-6 pt-6 pb-7 text-center text-white">
         <h1 className="mb-6 text-2xl font-bold">
           Refer your friends
           <br />
@@ -95,14 +96,14 @@ export default function ReferralScreen() {
 
       
           <div className="relative mx-auto mb-4 w-full max-w-[280px]">
-          <div className="border-t-2 border-dashed border-white/50"></div>
-          <div className="flex items-center justify-between rounded-lg bg-blue-600 p-3">
-            <div>
-              <p className="text-xs text-purple-200">Your referral code</p>
+          {/* <div className="borde"></div> */}
+          <div className="flex items-center justify-between rounded-lg bg-white p-3">
+            <div className="text-black">
+              <p className="text-xs">Your referral code</p>
               <p className="text-xl font-bold">{referralCode}</p>
             </div>
-            <Button onClick={copyToClipboard}  variant="ghost"  className={`h-auto rounded-md px-3 py-1 text-xs font-medium text-black
-         ${copied ? "bg-green-600" : "bg-white"} hover:bg-blue-100`}>
+            <Button onClick={copyToClipboard}  variant="ghost"  className={`h-auto rounded-md px-3 py-1 text-xs font-medium text-black border border-black
+         ${copied ? "bg-green-300 border-green-400" : "bg-blue-200"} hover:bg-blue-400`}>
           {copied ? "Copied!" : "Copy Code"}
             </Button>
           </div>
@@ -113,33 +114,78 @@ export default function ReferralScreen() {
 
         {/* Social buttons */}
         <div className="mx-auto flex max-w-[280px] justify-center gap-2">
-          <Button className="h-9 rounded-full bg-[#0088cc] px-2 py-1 text-sm text-white hover:bg-[#0077b5]">
+          <Button className="h-8 rounded-full bg-[#6494fc] px-2 py-1 text-sm text-white hover:bg-[#0077b5]">
         
 
            <i className="fi fi-brands-telegram text-lg"></i>
             Telegram
           </Button>
 
-          <Button className="h-9 rounded-full bg-[#1877f2] px-2 py-1 text-sm text-white hover:bg-[#166fe5]">
+          <Button className="h-8 rounded-full bg-[#1877f2] px-2 py-1 text-sm text-white hover:bg-[#166fe5]">
             
             <i className="fi fi-brands-facebook text-lg"></i>
             Facebook
           </Button>
 
-          <Button className="h-9 rounded-full bg-[#25d366] px-2 py-1 text-sm text-white hover:bg-[#128c7e]">
+          <Button className="h-8 rounded-full bg-[#25d366] px-2 py-1 text-sm text-white hover:bg-[#128c7e]">
          
             <i className="fi fi-brands-whatsapp text-lg"></i>WhatsApp
           </Button>
         </div>
       </div>
 
+      {/* How does it work section */}
+      <div className="bg-white px-8 py-6 mt-2 relative">
+        <h2 className="mb-6 text-lg font-bold text-gray-800">How Does it Work?</h2>
+        <div className="space-y-8 relative">
+          {/* Dotted line connector */}
+          <div className="absolute left-5 top-[44px] h-[120px] w-0 border-l-2 border-dashed border-blue-300"></div>
+
+          {/* Step 1 */}
+          <div className="flex items-start gap-2 relative z-10">
+            <div className="flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 shadow-sm">
+                <i className="fi fi-rr-key text-lg text-blue-600"></i>
+              </div>
+            </div>
+            <div className="pt-1">
+              <h3 className="text-sm font-medium text-gray-800">Refer your friend by sharing your unique referral code</h3>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="flex items-start gap-2 relative z-8">
+            <div className="flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 shadow-sm">
+                <i className="fi fi-rr-people-roof text-lg text-blue-600"></i>
+              </div>
+            </div>
+            <div className="pt-1">
+              <h3 className="text-sm font-medium text-gray-800">Your friend joins the Tap Academy Program with the referred code</h3>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="flex items-start gap-2 relative z-8">
+            <div className="flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 shadow-sm">
+                <i className="fi fi-ts-sack-dollar text-lg text-blue-600"></i>
+              </div>
+            </div>
+            <div className="pt-1">
+              <h3 className="text-sm font-medium text-gray-800">You get ₹1000 discount from your due amount</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* FAQ Section */}
-      <div className="bg-white px-6 h-max">
+      <div className="bg-white px-9 h-max pb-0 mt-2">
           <h2 className="mb-2 pt-4 text-lg font-bold text-gray-800">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1" className="border-b border-gray-200">
               <AccordionTrigger className="text-left font-medium text-gray-700 py-2.5">
-                What is Tap Academy's Referral and Earn Program?
+                What is Tap Academy's Referral <br /> and Earn Program?
               </AccordionTrigger>
               <AccordionContent className="text-sm text-gray-600 pb-2.5">
                 The Refer and Earn Program lets you earn real cash or discounts by inviting your friends to join our training batches. When your friend enrolls using your referral link, both of you get exciting rewards!
@@ -177,6 +223,7 @@ export default function ReferralScreen() {
             </AccordionItem>
           </Accordion>
         </div>
+
       </div>
     </div>
   )

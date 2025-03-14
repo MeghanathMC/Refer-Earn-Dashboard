@@ -169,26 +169,26 @@ const ReferDetails = () => {
         <table className="w-full">
           <thead>
             <tr className="text-left text-sm border-b">
-              <th className="px-3 py-2 font-medium text-gray-600 text-center">Number</th>
-              <th className="px-3 py-2 font-medium text-gray-600 text-center">Friend</th>
-              <th className="px-3 py-2 font-medium text-gray-600 text-center">Email</th>
-              <th className="px-3 py-2 font-medium text-gray-600 text-center cursor-pointer" onClick={handleDateSort}>
+              <th className="px-4 py-2 font-medium text-gray-600 text-center">Number</th>
+              <th className="px-4 py-2 font-medium text-gray-600 text-center">Friend</th>
+              <th className="px-4 py-2 font-medium text-gray-600 text-center">Email</th>
+              <th className="px-4 py-2 font-medium text-gray-600 text-center cursor-pointer" onClick={handleDateSort}>
                 Date {sortOrder === "asc" ? "↑" : "↓"}
               </th>
-              <th className="px-3 py-2 font-medium text-gray-600 text-center">Amount</th>
-              <th className="px-3 py-2 font-medium text-gray-600 text-center">Status</th>
-              <th className="px-3 py-2 font-medium text-gray-600"></th>
+              <th className="px-4 py-2 font-medium text-gray-600 text-center">Amount</th>
+              <th className="px-4 py-2 font-medium text-gray-600 text-center">Status</th>
+              <th className="px-4 py-2 font-medium text-gray-600"></th>
             </tr>
           </thead>
           <tbody>
             {referralsData.map((referral) => (
               <tr key={referral.id} className="border-b hover:bg-gray-50">
-                <td className="px-3 py-1.5 text-sm text-center">{referral.id}</td>
-                <td className="px-3 py-1.5 text-sm font-medium text-center">{referral.name}</td>
-                <td className="px-3 py-1.5 text-sm text-gray-600 text-center">{referral.email}</td>
-                <td className="px-3 py-1.5 text-sm text-center">{referral.date}</td>
-                <td className="px-3 py-1.5 text-sm text-center">₹{referral.amount.toLocaleString('en-IN')}</td>
-                <td className="px-3 py-1.5 text-center">
+                <td className="px-4 py-1.5 text-sm text-center">{referral.id}</td>
+                <td className="px-4 py-1.5 text-sm font-medium text-center">{referral.name}</td>
+                <td className="px-4 py-1.5 text-sm text-gray-600 text-center">{referral.email}</td>
+                <td className="px-4 py-1.5 text-sm text-center">{referral.date}</td>
+                <td className="px-4 py-1.5 text-sm text-center">₹{referral.amount.toLocaleString('en-IN')}</td>
+                <td className="px-4 py-1.5 text-center">
                   <span className={`inline-flex items-center px-2 py-0.5 text-sm rounded-full ${
                     referral.status === "Paid" ? "bg-green-100 text-green-600" :
                     referral.status === "Pending" ? "bg-yellow-100 text-yellow-600" :
@@ -200,7 +200,7 @@ const ReferDetails = () => {
                         referral.status === "Pending" ? "bg-yellow-500" :
                         "bg-red-500"
                       }`}></span>
-                      {referral.status}
+                  {referral.status}
                     </span>
                   </span>
                 </td>
