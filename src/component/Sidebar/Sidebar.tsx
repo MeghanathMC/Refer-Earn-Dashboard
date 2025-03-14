@@ -11,7 +11,7 @@ function Sidebar() {
       className={`h-screen fixed z-50 top-0 left-0 py-8 px-5 flex flex-col justify-between transition-all duration-300 bg-white`}
     >
       <div>
-        <img src={logo} alt="Logo" className="w-10" />
+        <img src={logo} alt="Logo" loading="lazy" className="w-10" />
       </div>
       <div className="w-full">
         <ul className="flex flex-col items-start gap-5 ">

@@ -6,7 +6,7 @@ type Referral = {
   email: string;
   date: string;
   amount: number;
-  status: "Paid" | "Pending" | "Unpaid";
+  status: "Registered" | "Pending" | "Rejected";
 };
 
 // Helper function to format date
@@ -26,7 +26,7 @@ const initialReferralsData: Referral[] = [
     email: "rahul.sharma234@gmail.com", 
     date: "20/10/2024",
     amount: 15000,
-    status: "Paid"
+    status: "Registered"
   },
   { 
     id: "TRN24003", 
@@ -34,7 +34,7 @@ const initialReferralsData: Referral[] = [
     email: "priyapatel99@gmail.com", 
     date: "21/10/2024",
     amount: 12000,
-    status: "Paid"
+    status: "Registered"
   },
   { 
     id: "TRN24005", 
@@ -50,7 +50,7 @@ const initialReferralsData: Referral[] = [
     email: "sneha.reddy45@gmail.com", 
     date: "23/10/2024",
     amount: 20000,
-    status: "Unpaid"
+    status: "Rejected"
   },
   { 
     id: "TRN24007", 
@@ -58,43 +58,13 @@ const initialReferralsData: Referral[] = [
     email: "karthik.menon21@gmail.com", 
     date: "24/10/2024",
     amount: 16000,
-    status: "Unpaid"
+    status: "Rejected"
   }
 ];
 
 const ReferDetails = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeFilter, setActiveFilter] = useState("All");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
   const [referralsData, setReferralsData] = useState(initialReferralsData);
-
-  // Filter counts
-  const filterCounts = {
-    All: referralsData.length,
-    Paid: referralsData.filter(r => r.status === "Paid").length,
-    Unpaid: referralsData.filter(r => r.status === "Unpaid").length,
-    Pending: referralsData.filter(r => r.status === "Pending").length,
-  };
-
-  // Handle search
-  const handleSearch = (term: string) => {
-    setSearchTerm(term);
-    const filtered = initialReferralsData.filter(referral => 
-      referral.name.toLowerCase().includes(term.toLowerCase()) &&
-      (activeFilter === "All" || referral.status === activeFilter)
-    );
-    setReferralsData(filtered);
-  };
-
-  // Handle filter
-  const handleFilter = (filter: string) => {
-    setActiveFilter(filter);
-    const filtered = initialReferralsData.filter(referral =>
-      (filter === "All" || referral.status === filter) &&
-      referral.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setReferralsData(filtered);
-  };
 
   // Handle date sort
   const handleDateSort = () => {
@@ -115,54 +85,6 @@ const ReferDetails = () => {
       <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-800">Referral History</h2>
         <p className="text-gray-500 text-sm mt-1">Track and manage all your referral transactions here</p>
-      </div>
-
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-        <div className="flex flex-wrap items-center gap-2">
-          <button 
-            onClick={() => handleFilter("All")}
-            className={`px-4 py-2 text-sm rounded-full transition-all ${
-              activeFilter === "All" ? "bg-blue-100 text-blue-600" : "text-gray-500"
-            }`}
-          >
-            All <span className="ml-1 text-xs bg-gray-100 px-2 py-0.5 rounded-full">{filterCounts.All}</span>
-          </button>
-          <button 
-            onClick={() => handleFilter("Paid")}
-            className={`px-4 py-2 text-sm rounded-full transition-all ${
-              activeFilter === "Paid" ? "bg-green-100 text-green-600" : "text-gray-500"
-            }`}
-          >
-            Paid <span className="ml-1 text-xs bg-gray-100 px-2 py-0.5 rounded-full">{filterCounts.Paid}</span>
-          </button>
-          <button 
-            onClick={() => handleFilter("Unpaid")}
-            className={`px-4 py-2 text-sm rounded-full transition-all ${
-              activeFilter === "Unpaid" ? "bg-red-100 text-red-600" : "text-gray-500"
-            }`}
-          >
-            Unpaid <span className="ml-1 text-xs bg-gray-100 px-2 py-0.5 rounded-full">{filterCounts.Unpaid}</span>
-          </button>
-          <button 
-            onClick={() => handleFilter("Pending")}
-            className={`px-4 py-2 text-sm rounded-full transition-all ${
-              activeFilter === "Pending" ? "bg-yellow-100 text-yellow-600" : "text-gray-500"
-            }`}
-          >
-            Pending <span className="ml-1 text-xs bg-gray-100 px-2 py-0.5 rounded-full">{filterCounts.Pending}</span>
-          </button>
-        </div>
-        
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search by friend's name..."
-            className="w-full md:w-64 px-4 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={searchTerm}
-            onChange={(e) => handleSearch(e.target.value)}
-          />
-          <i className="fi fi-rr-search absolute right-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-        </div>
       </div>
 
       <div className="overflow-x-auto">
@@ -190,23 +112,22 @@ const ReferDetails = () => {
                 <td className="px-4 py-1.5 text-sm text-center">₹{referral.amount.toLocaleString('en-IN')}</td>
                 <td className="px-4 py-1.5 text-center">
                   <span className={`inline-flex items-center px-2 py-0.5 text-sm rounded-full ${
-                    referral.status === "Paid" ? "bg-green-100 text-green-600" :
+                    referral.status === "Registered" ? "bg-green-100 text-green-600" :
                     referral.status === "Pending" ? "bg-yellow-100 text-yellow-600" :
                     "bg-red-100 text-red-600"
                   }`}>
                     <span className="flex items-center justify-center gap-1">
                       <span className={`w-1.5 h-1.5 rounded-full ${
-                        referral.status === "Paid" ? "bg-green-500" :
+                        referral.status === "Registered" ? "bg-green-500" :
                         referral.status === "Pending" ? "bg-yellow-500" :
                         "bg-red-500"
                       }`}></span>
-                  {referral.status}
+                      {referral.status}
                     </span>
                   </span>
                 </td>
                 <td className="px-3 py-1.5 text-center">
                   <button className="text-gray-400 hover:text-gray-600">
-                    <i className="fi fi-rr-menu-dots-vertical"></i>
                   </button>
                 </td>
               </tr>

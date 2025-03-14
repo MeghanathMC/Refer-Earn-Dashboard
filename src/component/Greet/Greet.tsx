@@ -18,7 +18,7 @@ function Greet(props: { setOpen: () => void }) {
         <div className="flex items-center gap-1">
           <h1 className="text-4xl font-medium relative">
             Welcome Harshith!
-            <span className="absolute -right-12 -top-1 text-4xl" role="img" aria-label="waving hand">
+            <span className="absolute -right-14 -top-1 text-4xl" role="img" aria-label="waving hand">
               👋
             </span>
           </h1>
@@ -35,9 +35,9 @@ function Greet(props: { setOpen: () => void }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
         <Info title="Remaining Amount" value={remainingAmount} type="red" />
-        <Info title="Days Left" value="15 Days" type="blue" />
+        <Info title="Days Left" value="15 Days" type="yellow" />
         <Info title="Referral Earnings" value="₹5,000" type="green" />
-        <Info title="Successful Referrals" value="5" type="green" />
+        <Info title="Successful Referrals" value="5" type="blue" />
       </div>
 
       <PaymentModal 
